@@ -1,0 +1,6 @@
+<%= link_to 'Create Idea', new_user_idea_path %>
+
+<% @ideas.each do |i| %>
+  <%= i.title %>
+  <%= i.category.name %>
+<% end %>
