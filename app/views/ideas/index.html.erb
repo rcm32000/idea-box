@@ -1,4 +1,5 @@
-<%= link_to 'Create Idea', new_user_idea_path %>
+<%= link_to 'Create Idea', new_idea_path %>
+<%= button_to 'Logout', root_path %>
 
 <% @ideas.each do |i| %>
   <%= i.title %>
