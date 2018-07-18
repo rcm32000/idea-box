@@ -1,0 +1,6 @@
+<h1>All Categories</h1>
+<% @categories.each do |c| %>
+  <%= c.name %></br>
+<% end %>
+
+<%= button_to 'Create Category', new_category_path, method: :get %>

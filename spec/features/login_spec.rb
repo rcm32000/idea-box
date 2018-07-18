@@ -34,4 +34,23 @@ describe 'login' do
     expect(page).to_not have_button('Logout')
     expect(page).to have_content('That Username/Password Combo Does Not Exist')
   end
+
+  it 'allows user to logout' do
+    user = User.create(name: 'Jimmy', username: 'khgsw', password: 'password')
+
+    visit root_path
+
+    click_link 'Login'
+
+    fill_in :username, with: user.username
+    fill_in :password, with: 'Password'
+
+    click_button 'Login'
+    click_button 'Logout'
+
+    expect(current_path).to eq(root_path)
+    expect(page).to_not have_button('Logout')
+    expect(page).to have_button('Login')
+    expect(page).to have_content('You have been successfully logged out')
+  end
 end

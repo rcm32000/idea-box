@@ -1,5 +1,10 @@
 <h1><%= @idea.title %></h1>
 <p>Description: <%= @idea.description %></p>
 <p>Category: <%= @idea.category.name %></p>
+<p>Images:</p>
+<%= @images.each do |i| %>
+  <p><%= i.title %>
+  <%= i.link %></p>
+<% end %>
 <%= button_to 'Edit', edit_idea_path(@idea), method: :get %>
 <%= button_to 'Delete', idea_path(@idea), method: :delete %>

@@ -12,7 +12,7 @@ class IdeasController < ApplicationController
     idea_data[:user_id] = current_user.id
     if Idea.create!(idea_data)
       flash[:success] = "You have created, #{Idea.last.title}!"
-      redirect_to ideas_path
+      redirect_to idea_path(Idea.last)
     else
       flash[:failed] = 'You forgot something'
       render :new
@@ -21,6 +21,7 @@ class IdeasController < ApplicationController
 
   def show
     @idea = Idea.find(params[:id])
+    @images = Image.all
   end
 
   def edit
