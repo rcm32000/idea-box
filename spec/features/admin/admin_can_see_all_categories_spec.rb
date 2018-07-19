@@ -7,7 +7,7 @@ describe 'catagories index page' do
     category2 = Category.create(name: 'DIY')
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
-    visit categories_path
+    visit admin_categories_path
 
     expect(page).to have_content(category1.name)
     expect(page).to have_content(category2.name)

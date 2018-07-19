@@ -1,4 +1,4 @@
-class CategoriesController < ApplicationController
+class Admin::CategoriesController < Admin::BaseController
   def index
     @categories = Category.all
   end
@@ -10,7 +10,7 @@ class CategoriesController < ApplicationController
   def create
     if Category.create!(category_params)
       flash[:success] = "You have created, #{Category.last.name}!"
-      redirect_to category_path(Category.last)
+      redirect_to admin_category_path(Category.last)
     else
       flash[:failed] = 'Uh...give it a name first?'
       render :new
@@ -25,7 +25,7 @@ class CategoriesController < ApplicationController
     category = Category.find(params[:id])
     category.destroy
     flash[:success] = "#{category.name} was successfully deleted!"
-    redirect_to categories_path
+    redirect_to admin_categories_path
   end
 
   private

@@ -5,7 +5,9 @@ Rails.application.routes.draw do
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
 
-  resources :categories
+  namespace :admin do
+    resources :categories, only: [:index, :show, :new, :create, :destroy]
+  end
   resources :ideas
   resources :images
   resources :users
