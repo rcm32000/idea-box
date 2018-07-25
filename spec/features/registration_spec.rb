@@ -12,7 +12,7 @@ describe 'Registration workflow' do
 
     click_on 'Sign Up to Be a New User'
 
-    expect(current_path).to eq(new_user_path)
+    expect(current_path).to eq(new_admin_user_path)
 
     fill_in :user_name, with: name
     fill_in :user_username, with: username
@@ -20,7 +20,7 @@ describe 'Registration workflow' do
 
     click_on 'Create User'
 
-    expect(current_path).to eq(user_path(User.last))
+    expect(current_path).to eq(admin_user_path(User.last))
     expect(page).to have_content("Welcome, #{name}!")
     expect(page).to_not have_content('That Username is Unavailable')
   end
@@ -34,7 +34,7 @@ describe 'Registration workflow' do
 
     click_on 'Sign Up to Be a New User'
 
-    expect(current_path).to eq(new_user_path)
+    expect(current_path).to eq(new_admin_user_path)
 
     fill_in :user_username, with: name
     fill_in :user_username, with: username
@@ -42,7 +42,7 @@ describe 'Registration workflow' do
 
     click_on 'Create User'
 
-    expect(current_path).to eq(users_path)
+    expect(current_path).to eq(admin_users_path)
     expect(page).to_not have_content("Welcome, #{name}!")
     expect(page).to have_content('That Username is Unavailable')
   end

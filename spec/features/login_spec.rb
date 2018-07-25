@@ -11,10 +11,34 @@ describe 'login' do
     fill_in :username, with: user.username
     fill_in :password, with: user.password
 
-    click_button 'Login'
+    within '.login_form' do
+      click_button 'Login'
+    end
 
     expect(current_path).to eq(ideas_path)
     expect(page).to have_button('Logout')
+    expect(page).to_not have_content('That Username/Password Combo Does Not Exist')
+  end
+
+  it 'can login an admin' do
+    user = User.create(name: 'Jimmy', username: 'khgsw', password: 'password', role: 1)
+
+    visit root_path
+
+    click_link 'Login'
+
+    fill_in :username, with: user.username
+    fill_in :password, with: user.password
+
+    within '.login_form' do
+      click_button 'Login'
+    end
+
+    expect(current_path).to eq(admin_dashboard_path)
+    expect(page).to have_button('Logout')
+    expect(page).to have_link('Categories')
+    expect(page).to have_link('Images')
+    expect(page).to have_link('Users')
     expect(page).to_not have_content('That Username/Password Combo Does Not Exist')
   end
 
@@ -28,7 +52,9 @@ describe 'login' do
     fill_in :username, with: user.username
     fill_in :password, with: 'Password'
 
-    click_button 'Login'
+    within '.login_form' do
+      click_button 'Login'
+    end
 
     expect(current_path).to eq(login_path)
     expect(page).to_not have_button('Logout')
@@ -43,9 +69,11 @@ describe 'login' do
     click_link 'Login'
 
     fill_in :username, with: user.username
-    fill_in :password, with: 'Password'
+    fill_in :password, with: user.password
 
-    click_button 'Login'
+    within '.login_form' do
+      click_button 'Login'
+    end
     click_button 'Logout'
 
     expect(current_path).to eq(root_path)

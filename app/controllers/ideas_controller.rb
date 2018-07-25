@@ -4,18 +4,20 @@ class IdeasController < ApplicationController
   end
 
   def new
+    @user = current_user
     @idea = current_user.ideas.new
   end
 
   def create
     idea_data = idea_params
     idea_data[:user_id] = current_user.id
-    if Idea.create!(idea_data)
-      flash[:success] = "You have created, #{Idea.last.title}!"
-      redirect_to idea_path(Idea.last)
-    else
+    if params[:idea][:title].empty? || params[:idea][:description].empty?
       flash[:failed] = 'You forgot something'
       render :new
+    else
+      Idea.create(idea_data)
+      flash[:success] = "You have created, #{Idea.last.title}!"
+      redirect_to admin_user_idea_path(Idea.last)
     end
   end
 
@@ -33,7 +35,7 @@ class IdeasController < ApplicationController
     @idea.update(idea_params)
     if @idea.save
       flash[:success] = "#{@idea.title} updated!"
-      redirect_to idea_path(@idea)
+      redirect_to admin_user_idea_path(@idea)
     else
       flash[:failes] = "#{@idea.title} missing needed info"
       render :edit
@@ -44,7 +46,7 @@ class IdeasController < ApplicationController
     idea = Idea.find(params[:id])
     idea.destroy
     flash[:success] = "#{idea.title} was successfully deleted!"
-    redirect_to ideas_path
+    redirect_to admin_user_ideas_path
   end
 
   private

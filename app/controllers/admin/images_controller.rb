@@ -1,4 +1,4 @@
-class ImagesController < ApplicationController
+class Admin::ImagesController < Admin::BaseController
   def index
     @images = Image.all
   end
@@ -10,15 +10,22 @@ class ImagesController < ApplicationController
   def create
     if Image.create!(image_params)
       flash[:success] = "You have created, #{Image.last.title}!"
-      redirect_to image_path(Image.last)
+      redirect_to admin_image_path(Image.last)
     else
-      flash[:failed] = 'Title and link sailor!'
+      flash[:failed] = 'Uh...give it a name first?'
       render :new
     end
   end
 
   def show
     @image = Image.find(params[:id])
+  end
+
+  def destroy
+    image = Image.find(params[:id])
+    image.destroy
+    flash[:success] = "#{image.title} was successfully deleted!"
+    redirect_to admin_categories_path
   end
 
   private
