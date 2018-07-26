@@ -14,7 +14,7 @@ describe 'User sees a specific idea' do
                                description: 'Never Work')
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user1)
 
-    visit idea_path(idea1)
+    visit user_idea_path(user1, idea1)
 
     expect(page).to have_content(category1.name)
     expect(page).to have_content(idea1.title)

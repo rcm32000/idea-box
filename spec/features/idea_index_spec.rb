@@ -9,10 +9,10 @@ describe 'idea index page functions' do
   context 'user can create an idea' do
     it 'should show a new idea option' do
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user1)
-      visit ideas_path
+      visit user_ideas_path(@user1)
       click_link 'Create Idea'
 
-      expect(current_path).to eq(new_idea_path)
+      expect(current_path).to eq(new_user_idea_path(@user1))
       expect(page).to have_content('Title')
       expect(page).to have_content('Description')
     end

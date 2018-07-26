@@ -12,17 +12,17 @@ describe 'User can edit a specific idea' do
     new_description = 'Willingness to Succeed'
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
-    visit idea_path(idea)
+    visit user_idea_path(user, idea)
     click_button 'Edit'
 
-    expect(current_path).to eq(edit_idea_path(idea))
+    expect(current_path).to eq(edit_user_idea_path(user, idea))
 
     select category2.name, from: :idea_category_id
     fill_in :idea_title, with: new_title
     fill_in :idea_description, with: new_description
     click_button 'Save Idea'
 
-    expect(current_path).to eq(idea_path(idea))
+    expect(current_path).to eq(user_idea_path(user, idea))
     expect(page).to have_content(category2.name)
     expect(page).to have_content(new_title)
     expect(page).to have_content(new_description)

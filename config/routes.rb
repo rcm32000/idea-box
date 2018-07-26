@@ -9,8 +9,9 @@ Rails.application.routes.draw do
     get '/dashboard', to: 'base#dashboard'
     resources :categories, only: [:index, :show, :new, :create, :destroy]
     resources :images, only: [:index, :show, :new, :create, :destroy]
-    resources :users do
-      resources :ideas
-    end
+    resources :users, only: [:index, :new, :create, :show]
+  end
+  resources :users, except: [:index, :new, :create, :show] do
+    resources :ideas
   end
 end

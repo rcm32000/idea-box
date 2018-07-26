@@ -1,4 +1,4 @@
-class Admin::UsersController < ApplicationController
+class UsersController < ApplicationController
   skip_before_action :require_user, only: [:new, :create]
   def index
     @users = User.all
@@ -12,8 +12,8 @@ class Admin::UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id
-      flash[:success] = "Successfully created #{@user.name}!"
-      redirect_to admin_user_path(@user)
+      flash[:success] = "Welcome, #{@user.name}!"
+      redirect_to user_path(@user)
     else
       flash[:failed] = 'That Username is Unavailable'
       render :new

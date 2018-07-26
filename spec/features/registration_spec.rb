@@ -12,7 +12,7 @@ describe 'Registration workflow' do
 
     click_on 'Sign Up to Be a New User'
 
-    expect(current_path).to eq(new_admin_user_path)
+    expect(current_path).to eq(new_user_path)
 
     fill_in :user_name, with: name
     fill_in :user_username, with: username
@@ -34,7 +34,7 @@ describe 'Registration workflow' do
 
     click_on 'Sign Up to Be a New User'
 
-    expect(current_path).to eq(new_admin_user_path)
+    expect(current_path).to eq(new_user_path)
 
     fill_in :user_username, with: name
     fill_in :user_username, with: username

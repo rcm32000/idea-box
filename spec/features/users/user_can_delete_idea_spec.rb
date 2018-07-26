@@ -9,10 +9,10 @@ describe 'User can delete a specific idea' do
                              description: 'Yeah Right')
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
-    visit idea_path(idea)
+    visit user_idea_path(user, idea)
     click_button 'Delete'
 
-    expect(current_path).to eq(ideas_path)
+    expect(current_path).to eq(user_ideas_path(user))
     expect(page).to have_content("#{idea.title} was successfully deleted!")
   end
 end

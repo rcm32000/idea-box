@@ -16,7 +16,7 @@ class SessionsController < ApplicationController
     if current_admin?
       redirect_to admin_dashboard_path
     else
-      redirect_to ideas_path
+      redirect_to user_ideas_path(current_user)
     end
   end
 

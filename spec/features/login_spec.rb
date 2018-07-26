@@ -15,7 +15,7 @@ describe 'login' do
       click_button 'Login'
     end
 
-    expect(current_path).to eq(ideas_path)
+    expect(current_path).to eq(user_ideas_path(user))
     expect(page).to have_button('Logout')
     expect(page).to_not have_content('That Username/Password Combo Does Not Exist')
   end
