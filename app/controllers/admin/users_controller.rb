@@ -1,5 +1,4 @@
-class Admin::UsersController < ApplicationController
-  skip_before_action :require_user, only: [:new, :create]
+class Admin::UsersController < Admin::BaseController
   def index
     @users = User.all
   end

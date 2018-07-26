@@ -5,13 +5,14 @@ Rails.application.routes.draw do
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
 
+  resources :users, only: [:new, :create, :show]
   namespace :admin do
     get '/dashboard', to: 'base#dashboard'
     resources :categories, only: [:index, :show, :new, :create, :destroy]
     resources :images, only: [:index, :show, :new, :create, :destroy]
-    resources :users, only: [:index, :new, :create, :show]
+    resources :users
   end
-  resources :users, except: [:index, :new, :create, :show] do
+  resources :users do
     resources :ideas
   end
 end

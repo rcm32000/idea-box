@@ -6,7 +6,9 @@ describe 'login' do
 
     visit root_path
 
-    click_link 'Login'
+    within '.nav_bar' do
+      click_button 'Login'
+    end
 
     fill_in :username, with: user.username
     fill_in :password, with: user.password
@@ -25,7 +27,9 @@ describe 'login' do
 
     visit root_path
 
-    click_link 'Login'
+    within '.nav_bar' do
+      click_button 'Login'
+    end
 
     fill_in :username, with: user.username
     fill_in :password, with: user.password
@@ -47,7 +51,9 @@ describe 'login' do
 
     visit root_path
 
-    click_link 'Login'
+    within '.nav_bar' do
+      click_button 'Login'
+    end
 
     fill_in :username, with: user.username
     fill_in :password, with: 'Password'
@@ -66,7 +72,9 @@ describe 'login' do
 
     visit root_path
 
-    click_link 'Login'
+    within '.nav_bar' do
+      click_button 'Login'
+    end
 
     fill_in :username, with: user.username
     fill_in :password, with: user.password
