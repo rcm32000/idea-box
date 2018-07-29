@@ -2,9 +2,9 @@ class Admin::BaseController < ApplicationController
   before_action :require_admin
 
   def dashboard
-    @categories = Category.all
-    @images = Image.all
-    @users = User.all
+    @categories_count = Category.count
+    @images_count = Image.count
+    @users_count = User.count
     render admin_dashboard_path
   end
 

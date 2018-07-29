@@ -6,7 +6,7 @@ describe 'login' do
 
     visit root_path
 
-    within '.nav_bar' do
+    within '.nav-bar' do
       click_button 'Login'
     end
 
@@ -27,7 +27,7 @@ describe 'login' do
 
     visit root_path
 
-    within '.nav_bar' do
+    within '.nav-bar' do
       click_button 'Login'
     end
 
@@ -51,7 +51,7 @@ describe 'login' do
 
     visit root_path
 
-    within '.nav_bar' do
+    within '.nav-bar' do
       click_button 'Login'
     end
 
@@ -72,7 +72,7 @@ describe 'login' do
 
     visit root_path
 
-    within '.nav_bar' do
+    within '.nav-bar' do
       click_button 'Login'
     end
 

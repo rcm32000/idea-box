@@ -1,9 +1,5 @@
 class UsersController < ApplicationController
   before_action :require_user, only: [:show]
-  def index
-    @users = User.all
-  end
-
   def new
     @user = User.new
   end
@@ -21,7 +17,22 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
+    @user = current_user
+  end
+
+  def edit
+    @user = current_user
+  end
+
+  def update
+    @user = current_user
+    @user.update(user_params)
+    if @user.save
+      flash[:success] = "#{@user.name} updated!"
+      redirect_to user_path(@user)
+    else
+      render :edit
+    end
   end
 
   private

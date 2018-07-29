@@ -5,12 +5,12 @@ Rails.application.routes.draw do
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
 
-  resources :users, only: [:new, :create, :show]
   namespace :admin do
     get '/dashboard', to: 'base#dashboard'
-    resources :categories, only: [:index, :show, :new, :create, :destroy]
-    resources :images, only: [:index, :show, :new, :create, :destroy]
+    resources :categories
+    resources :images
     resources :users
+    resources :ideas, only: [:index, :create, :show, :delete]
   end
   resources :users do
     resources :ideas

@@ -14,7 +14,7 @@ describe 'admin authorization' do
 
     context 'as default user' do
       it 'does not allow default user to see all images' do
-        user = User.create(username: 'Ramiro', password: 'password')
+        user = User.create(name: 'Test', username: 'Ramiro', password: 'password')
 
         allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 

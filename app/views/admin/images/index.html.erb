@@ -1,7 +1,11 @@
 <h1>Images</h1>
-<% @images.each do |i| %>
-  <%= i.title %>
-  <%= i.link %>
-<% end %>
+<div class="all-images">
+  <% @images.each do |i| %>
+    <div class="idea-image">
+      <%= link_to i.title, admin_image_path(i) %>
+      <img src="<%= i.link %>">
+    </div>
+  <% end %>
+</div>
 
-<%= button_to 'Create Image', new_admin_image_path, method: :get %>
+<%= button_to 'Create Image', new_admin_image_path, method: 'get' %>

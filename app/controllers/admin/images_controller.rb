@@ -25,7 +25,7 @@ class Admin::ImagesController < Admin::BaseController
     image = Image.find(params[:id])
     image.destroy
     flash[:success] = "#{image.title} was successfully deleted!"
-    redirect_to admin_categories_path
+    redirect_to admin_images_path
   end
 
   private

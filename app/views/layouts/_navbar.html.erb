@@ -1,7 +1,16 @@
-<nav class='nav_bar'>
-  <% if current_user? %>
+<nav class='nav-bar'>
+  <% if current_admin? %>
+    <h2><%= link_to 'Dashboard', admin_dashboard_path %></h2>
+    <h2><%= link_to 'Categories', admin_categories_path %></h2>
+    <h2><%= link_to 'Images', admin_images_path %></h2>
+    <h2><%= link_to 'Users', admin_users_path %></h2>
+    <%= button_to 'Logout', logout_path, method: 'delete' %>
+  <% elsif current_user %>
+    <%= button_to 'Ideas', user_ideas_path(current_user), method: 'get' %>
+    <%= button_to 'New Idea', new_user_idea_path(current_user), method: 'get' %>
+    <%= button_to 'Profile', user_path(current_user), method: 'get' %>
     <%= button_to 'Logout', logout_path, method: 'delete' %>
   <% else %>
-    <%= button_to 'Login', login_path %>
+    <%= button_to 'Login', login_path, method: 'get' %>
   <% end %>
 </nav>

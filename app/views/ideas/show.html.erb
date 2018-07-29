@@ -6,5 +6,5 @@
   <p><%= i.title %>
   <%= i.link %></p>
 <% end %>
-<%= button_to 'Edit', edit_user_idea_path(@user, @idea), method: :get %>
-<%= button_to 'Delete', user_idea_path(@user, @idea), method: :delete %>
+<%= button_to 'Edit', edit_user_idea_path(@user, @idea), method: 'get' %>
+<%= button_to 'Delete', user_idea_path(@user, @idea), method: 'delete' %>

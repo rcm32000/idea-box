@@ -18,7 +18,7 @@ describe 'Registration workflow' do
     fill_in :user_username, with: username
     fill_in :user_password, with: password
 
-    click_on 'Create User'
+    click_on 'Save'
 
     expect(current_path).to eq(user_path(User.last))
     expect(page).to have_content("Welcome, #{name}!")
@@ -40,7 +40,7 @@ describe 'Registration workflow' do
     fill_in :user_username, with: username
     fill_in :user_password, with: password
 
-    click_on 'Create User'
+    click_on 'Save'
 
     expect(current_path).to eq(users_path)
     expect(page).to_not have_content("Welcome, #{name}!")
