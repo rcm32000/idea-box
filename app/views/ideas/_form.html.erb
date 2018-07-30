@@ -6,6 +6,6 @@
   <%= f.label :description %>
   <%= f.text_area :description %>
   <%= f.label :images %>
-  <%= f.collection_select(:image_id, @images, :id, :title, multiple: true) %>
+  <%= f.collection_select(:image_id, @images, :id, :title, {}, {multiple: true, size: @images.length}) %>
   <%= f.submit 'Save Idea' %>
 <% end %>

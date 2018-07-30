@@ -16,11 +16,14 @@ class IdeasController < ApplicationController
   end
 
   def create
-    idea_data = idea_params
-    idea_data[:user_id] = current_user.id
-    @idea = Idea.new(idea_data)
+    @idea = current_user.ideas.create(idea_params)
     if @idea.save
-      flash[:success] = "You have created, #{Idea.last.title}!"
+      params[:idea][:image_id].each do |image_id|
+        unless image_id.empty?
+          IdeaImage.create(idea: @idea, image_id: image_id)
+        end
+      end
+      flash[:success] = "You have created, #{@idea.title}!"
       redirect_to user_idea_path(@user, @idea)
     else
       flash[:failed] = 'You forgot something'
@@ -30,7 +33,7 @@ class IdeasController < ApplicationController
 
   def show
     @idea = Idea.find(params[:id])
-    @images = @idea.idea_images
+    @images = @idea.images
   end
 
   def edit
@@ -61,6 +64,6 @@ class IdeasController < ApplicationController
   private
 
   def idea_params
-    params.require(:idea).permit(:category_id, :title, :description)
+    params.require(:idea).permit(:category_id, :title, :description, :image_id)
   end
 end

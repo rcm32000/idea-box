@@ -2,11 +2,9 @@
 <p>Description: <%= @idea.description %></p>
 <p>Category: <%= @idea.category.name %></p>
 <p>Images:</p>
-<%= @images.each do |i| %>
+<% @images.each do |i| %>
   <p><%= i.title %>
-  <%= i.link.each do |link| %>
-    <img src="<%= link %>">
-  <% end %></p>
+    <img src="<%= i.link %>"></p>
 <% end %>
 <%= button_to 'Edit', edit_user_idea_path(@user, @idea), method: 'get' %>
 <%= button_to 'Delete', user_idea_path(@user, @idea), method: 'delete' %>
