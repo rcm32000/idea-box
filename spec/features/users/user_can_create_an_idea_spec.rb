@@ -34,6 +34,7 @@ describe 'user can' do
 
   it 'gets an error when creation failed' do
     user = User.create(name: 'Jimmy', username: 'khgsw', password: 'password')
+    category = Category.create(name: 'Useless')
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
     visit user_ideas_path(user)
@@ -41,7 +42,7 @@ describe 'user can' do
     click_link 'Create Idea'
 
     expect(current_path).to eq(new_user_idea_path(user))
-
+save_and_open_page
     click_button 'Save Idea'
 
     expect(page).to have_content('You forgot something')

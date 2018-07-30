@@ -16,6 +16,7 @@
  * {
    margin: 0;
    padding: 0;
+   font-family: 'Times New Roman', Times, serif;
  }
 
  body {
@@ -53,4 +54,20 @@
 .idea-index {
   display: flex;
   flex-wrap: wrap;
+}
+
+.root-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  margin: 1rem;
+  padding: 1rem;
+  height: 5rem;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

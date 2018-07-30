@@ -6,11 +6,13 @@
     <h2><%= link_to 'Users', admin_users_path %></h2>
     <%= button_to 'Logout', logout_path, method: 'delete' %>
   <% elsif current_user %>
-    <%= button_to 'Ideas', user_ideas_path(current_user), method: 'get' %>
-    <%= button_to 'New Idea', new_user_idea_path(current_user), method: 'get' %>
-    <%= button_to 'Profile', user_path(current_user), method: 'get' %>
+    <h2><%= link_to 'Ideas', user_ideas_path(current_user) %></h2>
+    <h2><%= link_to 'New Idea', new_user_idea_path(current_user) %></h2>
+    <h2><%= link_to 'Profile', user_path(current_user) %></h2>
     <%= button_to 'Logout', logout_path, method: 'delete' %>
   <% else %>
-    <%= button_to 'Login', login_path, method: 'get' %>
+    <div id='nav-login'>
+      <%= button_to 'Login', login_path, method: 'get' %>
+    </div>
   <% end %>
 </nav>

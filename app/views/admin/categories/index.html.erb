@@ -1,6 +1,6 @@
 <h1>All Categories</h1>
 <% @categories.each do |c| %>
-  <%= link_to c.name, admin_category_path(c) %></br>
+  <p><%= link_to c.name, admin_category_path(c) %></p></br>
 <% end %>
 
 <%= button_to 'Create Category', new_admin_category_path, method: 'get' %>
