@@ -6,6 +6,7 @@ describe 'user can' do
     category = Category.create(name: 'Useless')
     image1 = Image.create(title: 'Light Bulb', link: 'www.lightbulbsrus.io')
     image2 = Image.create(title: 'Candle', link: 'www.flickering.net')
+    image3 = Image.create(title: 'Match', link: 'www.nothot.net')
     idea_title = 'Whatever'
     idea_description = 'Yeah right'
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
@@ -28,6 +29,7 @@ describe 'user can' do
     expect(page).to have_content(category.name)
     expect(page).to have_content(image1.title)
     expect(page).to have_content(image2.title)
+    expect(page).to_not have_content(image3.title)
   end
 
   it 'gets an error when creation failed' do

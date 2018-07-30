@@ -30,7 +30,7 @@ class IdeasController < ApplicationController
 
   def show
     @idea = Idea.find(params[:id])
-    @images = Image.all
+    @images = @idea.idea_images
   end
 
   def edit

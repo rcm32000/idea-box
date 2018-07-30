@@ -5,7 +5,7 @@
   <%= f.text_field :title %>
   <%= f.label :description %>
   <%= f.text_area :description %>
-  <%= f.label :image %>
-  <%= f.collection_select(:images, @images, :id, :title, multiple: true) %>
+  <%= f.label :images %>
+  <%= f.collection_select(:image_id, @images, :id, :title, multiple: true) %>
   <%= f.submit 'Save Idea' %>
 <% end %>
