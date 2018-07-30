@@ -1,11 +1,11 @@
 <%= form_for [@user, @idea] do |f| %>
   <%= f.label :category %>
-  <%= f.collection_select(:category_id, Category.all, :id, :name) %>
+  <%= f.collection_select(:category_id, @categories, :id, :name) %>
   <%= f.label :title %>
   <%= f.text_field :title %>
   <%= f.label :description %>
   <%= f.text_area :description %>
   <%= f.label :image %>
-  <%= f.collection_select(:image_id, Image.all, :id, :title) %>
+  <%= f.collection_select(:images, @images, :id, :title, multiple: true) %>
   <%= f.submit 'Save Idea' %>
 <% end %>

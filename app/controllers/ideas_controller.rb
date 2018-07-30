@@ -11,6 +11,8 @@ class IdeasController < ApplicationController
 
   def new
     @idea = current_user.ideas.new
+    @categories = Category.all
+    @images = Image.all
   end
 
   def create
@@ -33,6 +35,8 @@ class IdeasController < ApplicationController
 
   def edit
     @idea = Idea.find(params[:id])
+    @categories = Category.all
+    @images = Image.all
   end
 
   def update

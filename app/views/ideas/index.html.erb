@@ -1,6 +1,7 @@
 <%= link_to 'Create Idea', new_user_idea_path(@user) %>
-
-<% @ideas.each do |i| %>
-  <%= i.title %>
-  <%= i.category.name %>
-<% end %>
+<div class='ideas-index'>
+  <% @ideas.each do |i| %>
+    <%= link_to i.title, user_idea_path(current_user, i) %>
+    <%= i.category.name %>
+  <% end %>
+</div>

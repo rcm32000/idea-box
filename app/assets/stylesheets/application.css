@@ -41,11 +41,16 @@
   align-items: center;
   flex-direction: column;
   justify-content: center;
-  max-width: 15rem;
+  max-block-size: 30rem;
   margin: 1rem;
 }
 
 .all-images {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.idea-index {
   display: flex;
   flex-wrap: wrap;
 }
